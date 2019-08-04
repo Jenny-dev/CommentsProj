@@ -1,0 +1,27 @@
+<!-- this file is not in use due to import issues-->
+<div>
+    
+  Post Id:
+  <input type="text" [(ngModel)]="postId">
+  <button type="button" (click)="filterComments()">Get Comments</button>
+  <br>
+
+  Search comment body:
+  <input type="text" [(ngModel)]="commentFilter" (keyup)="filterComments()">
+
+  <div class="commentEntry" *ngFor="let comment of postComments| slice:commentsStart:commentsEnd">
+    <div class="commentId">
+      comment id: {{comment.id}}
+    </div><br><br>
+    
+    <div class="commentBody">
+      comment body:
+      <expand-text class="content" [text]="comment.body" [maxLength]="maxBodyLength"></expand-text>
+    </div>
+  </div>
+
+
+  <button type="button" *ngIf="showPrevBtn" (click)="prevPage()">Previous Comments</button>
+  <button type="button" *ngIf="showNextBtn" (click)="nextPage()">Next Comments</button>
+
+</div>  
