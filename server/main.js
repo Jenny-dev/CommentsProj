@@ -1,26 +1,26 @@
 import "./siteManager";
 
 Meteor.startup(() => { 
-  site = new siteManager();
-});
+  let site = new siteManager();
+  
+  Meteor.methods({
 
-
-Meteor.methods({
-
-  getComments: function(postId,filter){
-      
-    let comments = site.posts[postId];
-    if(!comments){ //postId doesn't exist
-      return [];
+    getComments: function(postId,filter){
+        
+      let comments = site.posts[postId];
+      if(!comments){ //postId doesn't exist
+        return [];
+      }
+      if(!filter){ //empty filter string
+        return comments;
+      }
+  
+      let filterLowerCase = filter.toLowerCase(); 
+      return comments.filter( comment => {
+        return comment.body.toLowerCase().includes(filterLowerCase);
+      });
     }
-    if(!filter){ //empty filter string
-      return comments;
-    }
-
-    let filterLowerCase = filter.toLowerCase(); 
-    return comments.filter( comment => {
-      return comment.body.toLowerCase().includes(filterLowerCase);
-    });
-  }
-
+  
+  });
+  
 });

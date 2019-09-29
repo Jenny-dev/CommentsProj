@@ -75,7 +75,7 @@ export class CommentsApp implements OnInit, OnDestroy {
 
   constructor(private changeDetector: ChangeDetectorRef, private commentsService: commentsService) {}
 
-  ngOnInit(){
+  ngOnInit():void{
     this.commentsSubscription = this.commentsService.getComments().subscribe(comments => {
         this.resetCommentsSlice();
         this.postComments = comments;
@@ -90,7 +90,7 @@ export class CommentsApp implements OnInit, OnDestroy {
   
   }
 
-  filterComments(){
+  filterComments():void{
 
     if(!isNaN(this.postId)){
       this.commentsService.filterComments(this.postId,this.commentFilter);
@@ -98,7 +98,7 @@ export class CommentsApp implements OnInit, OnDestroy {
 
   }
 
-  resetCommentsSlice(){
+  resetCommentsSlice():void{
 
     this.commentsStart = 0;
     this.commentsEnd = SLICE_SIZE;
@@ -107,7 +107,7 @@ export class CommentsApp implements OnInit, OnDestroy {
   
   }
 
-  nextPage(){
+  nextPage():void{
     
     this.commentsStart = this.commentsEnd;
     this.commentsEnd = this.commentsStart + SLICE_SIZE;
@@ -119,7 +119,7 @@ export class CommentsApp implements OnInit, OnDestroy {
   
   }
 
-  prevPage(){
+  prevPage():void{
     
     this.commentsStart = this.commentsStart - SLICE_SIZE;
     this.commentsEnd = this.commentsStart + SLICE_SIZE;
