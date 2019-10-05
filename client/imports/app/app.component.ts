@@ -6,56 +6,12 @@ import { Comment } from  '../app/comment';
 
 const SLICE_SIZE:number = 3; //number of comments to show at once(page) 
 
+import template from "./app.component.html";
+import "./app.component.css"; //import with 'styles' or 'styleUrls' doesn't work
+
 @Component({
   selector: 'comments-app',
-  //templateUrl:'./app.component.html',
-  template:`
-  <div>
-    
-      Post Id:
-      <input type="text" [(ngModel)]="postId">
-      <button type="button" (click)="filterComments()">Get Comments</button>
-      <br>
-
-      Search comment body:
-      <input type="text" [(ngModel)]="commentFilter" (keyup)="filterComments()">
-  
-      <div class="commentEntry" *ngFor="let comment of postComments| slice:commentsStart:commentsEnd">
-        <div class="commentId">
-          comment id: {{comment.id}}
-        </div><br><br>
-        
-        <div class="commentBody">
-          comment body:
-          <expand-text class="content" [text]="comment.body" [maxLength]="maxBodyLength"></expand-text>
-        </div>
-      </div>
-
-    
-      <button type="button" *ngIf="showPrevBtn" (click)="prevPage()">Previous Comments</button>
-      <button type="button" *ngIf="showNextBtn" (click)="nextPage()">Next Comments</button>
-  
-  </div>  
-  `,
-  //styleUrls: ['./app.scss']
-  styles:[`
-    #container{
-      margin: 1%;
-    }
-
-    .commentEntry{
-      border: solid 1px;
-      margin: 2px;
-      white-space: pre-line
-    }
-
-    button{
-      background-color: deepskyblue;
-      color: aliceblue;
-      border-radius: 12px;    
-    }
-  `]
-
+  templateUrl: template,
 })
 
 
@@ -71,7 +27,7 @@ export class CommentsApp implements OnInit, OnDestroy {
   private commentsEnd:number;   //end slice of comments
   private showPrevBtn:boolean = false;
   private showNextBtn:boolean = false;
-  private maxBodyLength:number = 500; //max comment body size to show at load stage 
+  private maxBodyLength:number = 100; //max comment body size to show at load stage 
 
   constructor(private changeDetector: ChangeDetectorRef, private commentsService: commentsService) {}
 

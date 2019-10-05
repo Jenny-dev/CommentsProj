@@ -1,19 +1,10 @@
 import { Component, Input, OnChanges, ChangeDetectorRef} from '@angular/core';
+import template from "./expandText.component.html";
+import "./expandText.component.css"; //import with 'styles' or 'styleUrls' doesn't work
 
 @Component({    
     selector: 'expand-text',
-    template: 
-    `
-        <div [innerHTML]="currentText"></div>
-        <button *ngIf="showExpandOption" (click)="toggleView()">{{isExpanded? 'Hide':'Show more'}}</button>
-    `,
-    styles:[`
-        button{
-            background-color: deepskyblue;
-            color: aliceblue;
-            border-radius: 12px;    
-        }
-    `]
+    templateUrl: template
 })
 
 export class ExpandTextComponent implements OnChanges {

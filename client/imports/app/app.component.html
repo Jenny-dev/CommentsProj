@@ -1,10 +1,16 @@
-<!-- this file is not in use due to import issues-->
+<h1>Search comments</h1>
+
+<h3>
+  Enter post id to see all the comments posted for it.
+  Then filter them by body content to find specific comments.
+</h3>
+
 <div>
     
   Post Id:
   <input type="text" [(ngModel)]="postId">
   <button type="button" (click)="filterComments()">Get Comments</button>
-  <br>
+  <br><br>
 
   Search comment body:
   <input type="text" [(ngModel)]="commentFilter" (keyup)="filterComments()">

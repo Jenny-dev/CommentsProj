@@ -1,4 +1,3 @@
 
-<!-- this file is not in use due to import issues-->
 <div [innerHTML]="currentText"></div>
-<button [class.hidden]="!showExpandOption" (click)="toggleView()">{{isExpanded? 'Hide':'Show more'}}</button>
+<button *ngIf="showExpandOption" (click)="toggleView()">{{isExpanded? 'Hide':'Show more'}}</button>
