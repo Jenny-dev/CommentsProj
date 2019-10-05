@@ -10,11 +10,10 @@ Comments json: https://jsonplaceholder.typicode.com/comments
 #######################################################
 
 Instructions how to the run the project:
-1. Install Meteor:
+1. Make sure you have Node.js and npm installed. 
+2. Install Meteor:
 https://www.meteor.com/install
-2. Install angular2-meteor:
-https://www.npmjs.com/package/angular2-meteor 
-3. Unzip project folder.
+3. Clone this project or download zip.
 4. Open terminal from commentProj folder.
 5. In the cmd type : "meteor npm install"
 6. In the cmd type: 'meteor'
@@ -24,9 +23,4 @@ https://www.npmjs.com/package/angular2-meteor
 		type: 'meteor reset'  
 		type: 'meteor'
 
-#######################################################
-
-Known issues:
-1. There is a problem importing html/css files (any file type different from .ts) to the app.component.ts and expandText.component.ts files. 
-In order to use html and css I had to place the content inside the component. It should be in separate files. 
 
